@@ -1,0 +1,7 @@
+.error{
+    font-weight: bold;
+    color:red;
+}
+.ng-cloak{
+    display: none;
+}

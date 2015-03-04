@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Log viewer</title>
+    <link rel="stylesheet" type="text/css" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" />
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+<body>
+<div ng-app="LogViewer">
+<div ng-controller="MsgCtrl">
+    <div class="error ng-cloak" ng-show="isErrorActive" >{{lastErrorMessage}}</div>
+</div>
+
+<div ng-controller="VelvetCtrl">
+    <label for="velvet-host">Velvet host</label>
+    <input id="velvet-host" ng-model="velvetHost"  size="80" placeholder="http://velvet-host.net">
+    <label for="debug-service-list">Select debug service</label>
+    <select id="debug-service-list" ng-model="debugService"
+            ng-options="opt as opt.label for opt in versions">
+    </select>
+    <label for="debug-service">Debug service</label>
+    <input id="debug-service" ng-model="debugService.value"  size="50" ng-disabled="debugService.code!=2">
+    <br>
+    <label for="username">Username</label>
+    <input id="username" ng-model="username">
+    <label for="password">Password</label>
+    <input id="password" ng-model="password">
+    <br>
+    <label for="reqID">X-PerformanceLogger</label>
+    <input id="reqID" type="text" ng-model="reqID"  size="55">
+    <input id="go" type="button" value="{{startBtnLbl}}"  ng-click="getLogs()"><br>
+</div>
+
+<div ng-controller="PrettyPrintCtrl">
+    <label for="req">Request</label>
+    <input id="req" type="radio" ng-model="logType" value="req" checked ng-change="showLogs()">
+    <label for="resp">Response</label>
+    <input id="resp" type="radio" ng-model="logType" value="resp" ng-change="showLogs()">
+    <label for="full">Full log</label>
+    <input id="full" type="radio" ng-model="logType" value="full" ng-change="showLogs()">
+    <br>
+    <label for="stylish">Show formatted</label>
+    <input id="stylish" type="checkbox" ng-model="isFormatted" ng-change="showLogs()">
+</div>
+</div>
+
+<!-- No Angular block-->
+<div class="result">
+        <pre class="prettyprint lang-html" >
+        </pre>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+<script src="js/velvet.js"></script>
+<script src="js/messages.js"></script>
+<script src="js/fancylog.js"></script>
+</body>
+</html>
