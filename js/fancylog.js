@@ -13,7 +13,11 @@ PPModule.controller('PrettyPrintCtrl', ['$scope','$window',function ($scope,$win
     });
     $scope.$on('logsLoaded',function(event, arg){
         $scope.logs = arg.logs;
-        $scope.url = arg.url;
+
+        //do not change url if it's empty - switch request type case
+        if (arg.url){
+            $scope.url = arg.url;
+        }
         showLogs();
     });
 

@@ -29,6 +29,11 @@
     <br>
     <label for="reqID">X-PerformanceLogger</label>
     <input id="reqID" type="text" ng-model="reqID"  size="55">
+    <br>
+    <label for="reqType">Select request</label>
+    <select id="reqType">
+        <option ng-repeat="type in requestTypes" ng-click="updateLogsType($index)">{{type}}</option>
+    </select>
     <input id="go" type="button" value="{{startBtnLbl}}"  ng-click="getLogs()"><br>
 </div>
 
