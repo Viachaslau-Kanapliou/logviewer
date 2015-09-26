@@ -10,10 +10,14 @@
 </head>
 <body>
 <div class="container-fluid" ng-app="LogViewer">
-    <div ng-include="'menu/top/topMenu.tpl.html'"></div>
-    <div class="row">
-        <div class="left-nav-panel" ng-include="'menu/left/leftMenu.tpl.html'"></div>
-        <div class="logs" ng-include="'logs/fancylog.tpl.html'"></div>
+    <div class="top-menu row" ng-include="'menu/top/topMenu.tpl.html'"></div>
+    <div class="main-content row">
+        <div class="col-sm-1">
+            <div class="left-nav-panel row" ng-include="'menu/left/leftMenu.tpl.html'"></div>
+        </div>
+        <div class="col-sm-11">
+            <div class="logs row" ng-include="'logs/fancylog.tpl.html'"></div>
+        </div>
     </div>
 </div>
 

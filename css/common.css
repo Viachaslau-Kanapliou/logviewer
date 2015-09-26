@@ -5,3 +5,14 @@
 .ng-cloak{
     display: none;
 }
+body{
+    padding: 5px;
+    overflow: hidden;
+}
+.top-menu{
+    margin-bottom: 10px;
+}
+.main-content{
+    overflow: auto;
+    height: 100%;
+}

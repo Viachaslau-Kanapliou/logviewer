@@ -1,21 +1,37 @@
-<form class="form-horizontal" ng-controller="VlvConfigCtrl">
-    <div class="form-group">
-        <label for="velvet-host">Velvet host</label>
-        <input id="velvet-host" ng-model="velvetHost" size="80" placeholder="http://velvet-host.net">
-    </div>
-    <div class="form-group">
-        <label for="debug-service-list">Debug service</label>
-        <select id="debug-service-list" ng-model="debugService"
-                ng-options="opt as opt.label for opt in versions">
-        </select>
-        <label for="debug-service">Debug service</label>
-        <input id="debug-service" ng-model="debugService.value" size="50"
-               ng-disabled="debugService.code!=2">
-    </div>
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input id="username" ng-model="username">
-        <label for="password">Password</label>
-        <input id="password" ng-model="password">
-    </div>
-</form>
+<div class="col-sm-2 spacer"></div>
+<div class="col-sm-8">
+    <form class="form-horizontal row" ng-controller="VlvConfigCtrl">
+        <div class="form-group">
+            <label for="velvet-host" class="control-label col-sm-3">Velvet host</label>
+
+            <div class="col-sm-9">
+                <input id="velvet-host" ng-model="velvetHost" class="form-control" size="80"
+                       placeholder="http://velvet-host.net">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="debug-service-list" class="control-label col-sm-3">Debug service</label>
+
+            <div class="col-sm-2">
+                <select id="debug-service-list" ng-model="debugService" class="form-control"
+                        ng-options="opt as opt.label for opt in versions">
+                </select>
+            </div>
+            <div class="col-sm-7">
+                <input id="debug-service" ng-model="debugService.value" size="50" class="form-control"
+                       ng-disabled="debugService.code!=2">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username" class="control-label col-sm-3">User</label>
+
+            <div class="col-sm-5">
+                <input id="username" ng-model="username" class="form-control">
+            </div>
+            <div class="col-sm-4">
+                <input id="password" ng-model="password" class="form-control">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="col-sm-2 spacer"></div>
