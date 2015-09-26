@@ -1,0 +1,13 @@
+<form action="" class="form-inline" ng-controller="NavigationCtrl">
+    <div class="form-group">
+        <label for="reqID">X-PerformanceLogger</label>
+        <input id="reqID" type="text" ng-model="reqID" size="55">
+    </div>
+    <div class="form-group">
+        <label for="reqType">Select request</label>
+        <select id="reqType">
+            <option ng-repeat="type in requestTypes" ng-click="updateLogsType($index)">{{type}}</option>
+        </select>
+    </div>
+    <input id="go" type="button" value="{{startBtnLbl}}" ng-click="getLogs()"><br>
+</form>

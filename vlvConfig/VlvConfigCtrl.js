@@ -1,8 +1,5 @@
-var LogViewer = angular.module('LogViewer', [
-    'MsgModule', 'PrettyPrintModule'
-]);
-
-LogViewer.controller('VelvetCtrl',
+angular.module('LogViewer.VlvConfig',[])
+    .controller('VlvConfigCtrl',
     ['$scope', '$http', 'messageService', '$rootScope', function ($scope, $http, messageService, $rootScope) {
         var V_HOST = "V_HOST";
         var D_SERVICE = "D_SERVICE";

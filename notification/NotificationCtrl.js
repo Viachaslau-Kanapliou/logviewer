@@ -1,5 +1,5 @@
-var MsgModule = angular.module('MsgModule', []);
-MsgModule.controller('MsgCtrl', ['$scope','$timeout', function ($scope,$timeout) {
+angular.module('LogViewer.Notification', [])
+.controller('NotificationCtrl', ['$scope','$timeout', function ($scope,$timeout) {
     $scope.lastErrorMessage = null;
     $scope.isErrorActive = false;
 
@@ -10,9 +10,9 @@ MsgModule.controller('MsgCtrl', ['$scope','$timeout', function ($scope,$timeout)
             $scope.isErrorActive = false;
         },2000);
     });
-}]);
+}])
 
-MsgModule.service('messageService',['$rootScope',function($rootScope){
+.service('messageService',['$rootScope',function($rootScope){
     //public interface
     var service = {
         showError    : showError

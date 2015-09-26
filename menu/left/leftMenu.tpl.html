@@ -1,0 +1,11 @@
+<div ng-controller="LeftMenuCtrl">
+    <label for="req">Request</label>
+    <input id="req" type="radio" ng-model="logType" value="req" checked ng-change="showLogs()">
+    <label for="resp">Response</label>
+    <input id="resp" type="radio" ng-model="logType" value="resp" ng-change="showLogs()">
+    <label for="full">Full log</label>
+    <input id="full" type="radio" ng-model="logType" value="full" ng-change="showLogs()">
+    <br>
+    <label for="stylish">Show formatted</label>
+    <input id="stylish" type="checkbox" ng-model="isFormatted" ng-change="showLogs()">
+</div>

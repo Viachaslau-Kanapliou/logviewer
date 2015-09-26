@@ -1,5 +1,5 @@
-var PPModule = angular.module('PrettyPrintModule', []);
-PPModule.controller('PrettyPrintCtrl', ['$scope','$window',function ($scope,$window) {
+angular.module('LogViewer.Fancylog', [])
+.controller('FancylogCtrl', ['$scope','$window',function ($scope,$window) {
     $scope.LOG_TYPE=["req","resp","full"];
     $scope.logs = null;
     $scope.url = null;

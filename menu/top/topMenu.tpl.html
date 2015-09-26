@@ -1,0 +1,13 @@
+<div ng-controller="TopMenuCtrl">
+    <div class="row settings" collapse="isCollapsed">
+        <div class="col-sm-3 spacer"></div>
+        <div class="col-sm-6" ng-include="'vlvConfig/vlvConfig.tpl.html'"></div>
+        <div class="col-sm-3 spacer"></div>
+    </div>
+
+    <div class="row notification" ng-include="'notification/notification.tpl.html'"></div>
+    <div class="row top-nav-panel">
+        <div ng-include="'menu/navigation/navigation.tpl.html'"></div>
+        <span class="glyphicon glyphicon-chevron-down" ng-click="isCollapsed = !isCollapsed"></span>
+    </div>
+</div>
