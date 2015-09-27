@@ -72,18 +72,20 @@ angular.module('LogViewer.Fancylog', [])
             function getActiveLogs() {
                 var index = osaCalls.indexOf(activeOsaCall);
                 var singleLog = parseLogs(logs[index]);
-                if (isRequest && isResponse){
+                if (isRequest && isResponse) {
                     return singleLog
-                } else if (isRequest){
+                } else if (isRequest) {
                     return singleLog.reqXML
-                } else if (isResponse){
+                } else if (isResponse) {
                     return singleLog.respXML
                 }
                 return null;
             }
-            function getOsaCalls(){
+
+            function getOsaCalls() {
                 return osaCalls;
             }
+
             function findOsaCalls() {
                 var names = [];
                 var req = "";
@@ -124,7 +126,8 @@ angular.module('LogViewer.Fancylog', [])
             function isFormatted() {
                 return formatted;
             }
-            function setDisplayLogs(isReqVisible, isRespVisible){
+
+            function setDisplayLogs(isReqVisible, isRespVisible) {
                 isRequest = isReqVisible;
                 isResponse = isRespVisible;
                 $rootScope.$broadcast('settingsUpdated');
@@ -135,18 +138,33 @@ angular.module('LogViewer.Fancylog', [])
     ])
     .directive('prettyprint', [
         function () {
+            function render(isFormatted, logs, element) {
+                if (!isFormatted) {
+                    var el = angular.element("<div>").text(logs);
+                    element.html(prettyPrintOne(el.html()));
+                } else {
+                    element.text(logs);
+                }
+            }
+
             return {
                 scope: {
-                    isFormatted: '=',
+                    format: '@',
                     logs: '='
                 },
                 restrict: 'C',
-                link: function(scope, element, attrs) {
-                    if (scope.isFormatted) {
-                        element.html(prettyPrintOne(scope.logs));
-                    } else {
-                        element.html(scope.logs);
-                    }
+                link: function (scope, element, attrs) {
+                    render(scope.format, scope.logs, element);
+
+                    scope.$watch(attrs.format, function (newValue) {
+                        render(newValue, attrs.logs, element)
+                    });
+                    scope.$watch(scope.format, function (newValue) {
+                        render(newValue, attrs.logs, element)
+                    });
+                    scope.$watch(attrs.logs, function (newValue) {
+                        render(attrs.format, newValue, element)
+                    });
                 }
             }
         }
