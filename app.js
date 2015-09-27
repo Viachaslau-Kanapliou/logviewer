@@ -4,6 +4,7 @@ angular.module('LogViewer', [
     'LocalStorageModule',
     'ngLodash',
     'LogViewer.Fancylog',
+    'LogViewer.Menu',
     'LogViewer.Menu.Left',
     'LogViewer.Menu.Navigation',
     'LogViewer.Menu.Top',

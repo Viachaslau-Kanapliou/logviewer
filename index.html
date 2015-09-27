@@ -11,7 +11,7 @@
 <body>
 <div class="container-fluid" ng-app="LogViewer">
     <div class="top-menu row" ng-include="'menu/top/topMenu.tpl.html'"></div>
-    <div class="main-content row">
+    <div class="main-content row" set-height>
             <div class="col-sm-1">
                 <div class="left-nav-panel row" ng-include="'menu/left/leftMenu.tpl.html'"></div>
             </div>
@@ -33,6 +33,7 @@
 
 <!-- App scripts-->
 <script src="logs/Fancylog.js"></script>
+<script src="menu/MenuCommon.js"></script>
 <script src="menu/left/LeftMenu.js"></script>
 <script src="menu/navigation/Navigation.js"></script>
 <script src="menu/top/TopMenu.js"></script>
