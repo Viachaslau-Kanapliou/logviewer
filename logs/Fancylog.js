@@ -138,8 +138,9 @@ angular.module('LogViewer.Fancylog', [])
     ])
     .directive('prettyprint', [
         function () {
-            function render(isFormatted, logs, element) {
-                if (!isFormatted) {
+            function printLogs(isFormatted, logs, element) {
+                //string expected
+                if (""+isFormatted == "true") {
                     var el = angular.element("<div>").text(logs);
                     element.html(prettyPrintOne(el.html()));
                 } else {
@@ -150,20 +151,17 @@ angular.module('LogViewer.Fancylog', [])
             return {
                 scope: {
                     format: '@',
-                    logs: '='
+                    logs: '@'
                 },
                 restrict: 'C',
                 link: function (scope, element, attrs) {
-                    render(scope.format, scope.logs, element);
+                    printLogs(scope.format, scope.logs, element);
 
-                    scope.$watch(attrs.format, function (newValue) {
-                        render(newValue, attrs.logs, element)
+                    scope.$watch('format', function (newValue) {
+                        printLogs(newValue, attrs.logs, element)
                     });
-                    scope.$watch(scope.format, function (newValue) {
-                        render(newValue, attrs.logs, element)
-                    });
-                    scope.$watch(attrs.logs, function (newValue) {
-                        render(attrs.format, newValue, element)
+                    scope.$watch('logs', function (newValue) {
+                        printLogs(attrs.format, newValue, element)
                     });
                 }
             }
