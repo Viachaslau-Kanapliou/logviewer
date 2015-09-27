@@ -19,3 +19,9 @@ body{
 .glyphicon{
     cursor: pointer;
 }
+.glyphicon.active{
+    color: #428bca;
+}
+.left-nav-panel{
+    position: fixed;
+}

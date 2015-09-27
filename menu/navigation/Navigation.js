@@ -1,6 +1,7 @@
 angular.module('LogViewer.Menu.Navigation', [])
 /**
  * Listen 'logsLoaded' do 'setOsaCalls'
+ * Listen 'logsNotLoaded' do 'clean'
  * throw 'headerSizeChanged' ev = {}
  */
     .controller('NavigationCtrl', ['$scope', 'messageService', 'logService', '$rootScope',
@@ -19,12 +20,13 @@ angular.module('LogViewer.Menu.Navigation', [])
             $scope.setActiveOsaCall = function() {
                 logService.setActiveOsaCall($scope.activeOsaCall);
             };
-            $scope.$on('logsLoaded', function (ev, args) {
-                if (args.type == 'success') {
+            $scope.$on('logsLoaded', function () {
                     $scope.osaCalls = logService.getOsaCalls();
                     $scope.activeOsaCall = logService.getActiveOsaCall();
-                } else {
-                    $scope.osaCalls = null;
-                }
+            });
+
+            $scope.$on('logsNotLoaded', function () {
+                $scope.osaCalls = [];
+                $scope.activeOsaCall = null;
             });
         }]);

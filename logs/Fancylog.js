@@ -2,6 +2,7 @@ angular.module('LogViewer.Fancylog', [])
 /**
  * listen 'settingsUpdated' do 'showLogs'
  * listen 'logsLoaded' do 'showLogs'
+ * listen 'logsNotLoaded' do 'clean'
  */
     .controller('FancylogCtrl', ['$scope', 'logService',
         function ($scope, logService) {
@@ -13,16 +14,20 @@ angular.module('LogViewer.Fancylog', [])
                 $scope.logs = logService.getActiveLogs();
             };
 
-            $scope.$on('settingsUpdated', function (event, arg) {
+            $scope.$on('settingsUpdated', function () {
                 $scope.showLogs();
             });
-            $scope.$on('logsLoaded', function (event, arg) {
+            $scope.$on('logsLoaded', function () {
+                $scope.showLogs();
+            });
+            $scope.$on('logsNotLoaded', function () {
                 $scope.showLogs();
             });
         }])
 /**
- * throw 'logsLoaded' event {type='success' || 'error', msg : 'String'}
+ * throw 'logsLoaded' event {}
  * throw 'settingsUpdated' event {}
+ * throw 'logsNotLoaded' event {type='error', msg : 'String'}
  */
     .service('logService', ['$http', 'vlvConfigService', '$rootScope',
         function ($http, vlvConfigService, $rootScope) {
@@ -43,7 +48,11 @@ angular.module('LogViewer.Fancylog', [])
                 setFormatted: setFormatted,
                 setDisplayLogs: setDisplayLogs
             };
-
+            function clean(){
+                activeOsaCall = null;
+                osaCalls = null;
+                logs = null;
+            }
             function getLogs(loggerID) {
                 var url = vlvConfigService.getDebugURL(loggerID);
                 var authdata = vlvConfigService.getBasicToken();
@@ -61,15 +70,20 @@ angular.module('LogViewer.Fancylog', [])
                             activeOsaCall = osaCalls[0];
                             $rootScope.$broadcast('logsLoaded', {type: 'success'});
                         } else {
-                            $rootScope.$broadcast('logsLoaded', {type: 'error', msg: 'No logs founds'});
+                            clean();
+                            $rootScope.$broadcast('logsNotLoaded', {type: 'error', msg: 'No logs founds'});
                         }
                     })
                     .error(function () {
-                        $rootScope.$broadcast('logsLoaded', {type: 'error', msg: 'Connection issue'});
+                        clean();
+                        $rootScope.$broadcast('logsNotLoaded', {type: 'error', msg: 'Connection issue'});
                     })
             }
 
             function getActiveLogs() {
+                if (!activeOsaCall) {
+                    return null;
+                }
                 var index = osaCalls.indexOf(activeOsaCall);
                 var singleLog = parseLogs(logs[index]);
                 if (isRequest && isResponse) {
