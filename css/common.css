@@ -13,6 +13,9 @@ body{
     margin-bottom: 10px;
 }
 .main-content{
-    overflow: auto;
-    height: 100%;
+    overflow-y: auto;
+   height: 750px;
+}
+.glyphicon{
+    cursor: pointer;
 }

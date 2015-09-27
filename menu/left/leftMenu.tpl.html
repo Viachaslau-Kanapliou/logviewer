@@ -1,16 +1,19 @@
 <div ng-controller="LeftMenuCtrl" class="col-sm-12">
     <div class="row">
         <div class="btn-group" role="group" aria-label="...">
-            <button id="resp" type="button" class="btn btn-default" ng-change="showLogs()">
+            <button id="resp" type="button" class="btn btn-default" ng-click="showRequest()">
                 <span class="glyphicon glyphicon-arrow-up"></span>
             </button>
-            <button id="req" type="button" class="btn btn-default" ng-change="showLogs()">
+            <button id="req" type="button" class="btn btn-default" ng-click="showResponse()">
                 <span class="glyphicon glyphicon-arrow-down"></span>
             </button>
         </div>
     </div>
     <div class="row">
-            <span class="glyphicon glyphicon-tag"></span>
+        HISTORY
+    </div>
+    <div class="row">
+            <span class="glyphicon glyphicon-tag" ng-click="toggleFormatted()"></span>
     </div>
     <div class="row">
         <span class="glyphicon glyphicon-download-alt"></span>

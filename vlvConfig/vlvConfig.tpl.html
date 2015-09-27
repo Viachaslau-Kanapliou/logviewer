@@ -13,12 +13,13 @@
             <label for="debug-service-list" class="control-label col-sm-3">Debug service</label>
 
             <div class="col-sm-2">
-                <select id="debug-service-list" ng-model="debugService" class="form-control"
-                        ng-options="opt as opt.label for opt in versions">
+                <select id="debug-service-list" class="form-control"
+                        ng-model="debugService"
+                        ng-options="version.label for version in versions">
                 </select>
             </div>
             <div class="col-sm-7">
-                <input id="debug-service" ng-model="debugService.value" size="50" class="form-control"
+                <input id="debug-service" ng-model="debugService.value"  class="form-control"
                        ng-disabled="debugService.code!=2">
             </div>
         </div>
@@ -26,10 +27,10 @@
             <label for="username" class="control-label col-sm-3">User</label>
 
             <div class="col-sm-5">
-                <input id="username" ng-model="username" class="form-control">
+                <input id="username" ng-model="username" class="form-control" placeholder="login">
             </div>
             <div class="col-sm-4">
-                <input id="password" ng-model="password" class="form-control">
+                <input id="password" ng-model="password" class="form-control" placeholder="password">
             </div>
         </div>
     </form>

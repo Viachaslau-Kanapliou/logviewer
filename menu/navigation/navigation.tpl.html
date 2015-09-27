@@ -1,9 +1,9 @@
-<form action="" class="form-horizontal" ng-controller="NavigationCtrl">
+<form ng-submit="getLogs()" class="form-horizontal" ng-controller="NavigationCtrl">
 
 
     <div class="col-sm-5">
         <div class="input-group">
-            <input type="text" id="reqID" class="form-control" placeholder="X-Performance-Logger...">
+            <input type="text" ng-model="loggerID" class="form-control" placeholder="X-Performance-Logger...">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">Go!</button>
             </span>
@@ -11,14 +11,14 @@
     </div>
 
     <div class="col-sm-1 ">
-        <button class="btn btn-default" id="go" type="reset" ng-click="getLogs()">Clear</button>
+        <button class="btn btn-default"type="reset">Clear</button>
     </div>
 
     <label for="reqType" class="control-label col-sm-2">OSA call</label>
 
     <div class="col-sm-4">
-        <select id="reqType" class="form-control">
-            <option ng-repeat="type in requestTypes" ng-click="updateLogsType($index)">{{type}}</option>
+        <select id="reqType" class="form-control" ng-disabled="!osaCalls.length"
+                ng-model="activeOsaCall" ng-change="setActiveOsaCall()" ng-options="call for call in osaCalls">
         </select>
     </div>
 

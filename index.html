@@ -12,12 +12,12 @@
 <div class="container-fluid" ng-app="LogViewer">
     <div class="top-menu row" ng-include="'menu/top/topMenu.tpl.html'"></div>
     <div class="main-content row">
-        <div class="col-sm-1">
-            <div class="left-nav-panel row" ng-include="'menu/left/leftMenu.tpl.html'"></div>
-        </div>
-        <div class="col-sm-11">
-            <div class="logs row" ng-include="'logs/fancylog.tpl.html'"></div>
-        </div>
+            <div class="col-sm-1">
+                <div class="left-nav-panel row" ng-include="'menu/left/leftMenu.tpl.html'"></div>
+            </div>
+            <div class="col-sm-11">
+                <div class="logs row" ng-include="'logs/fancylog.tpl.html'"></div>
+            </div>
     </div>
 </div>
 
@@ -26,14 +26,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-animate.js"></script>
 <script src="https://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
 <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.2.2/angular-local-storage.min.js"></script>
+
+<!-- Vendor-->
+<script src="vendor/ng-lodash.min.js"></script>
 
 <!-- App scripts-->
-<script src="logs/FancylogCtrl.js"></script>
-<script src="menu/left/LeftMenuCtrl.js"></script>
-<script src="menu/navigation/NavigationCtrl.js"></script>
-<script src="menu/top/TopMenuCtrl.js"></script>
-<script src="notification/NotificationCtrl.js"></script>
-<script src="vlvConfig/VlvConfigCtrl.js"></script>
+<script src="logs/Fancylog.js"></script>
+<script src="menu/left/LeftMenu.js"></script>
+<script src="menu/navigation/Navigation.js"></script>
+<script src="menu/top/TopMenu.js"></script>
+<script src="notification/Notification.js"></script>
+<script src="vlvConfig/VlvConfig.js"></script>
 <script src="app.js"></script>
 
 </body>
