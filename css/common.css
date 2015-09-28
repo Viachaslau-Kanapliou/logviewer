@@ -8,6 +8,7 @@
 body{
     padding: 5px;
     overflow: hidden;
+    background-color: goldenrod;
 }
 .top-menu{
     margin-bottom: 10px;
@@ -18,12 +19,23 @@ body{
 .glyphicon{
     cursor: pointer;
 }
-.glyphicon.active{
-    color: #428bca;
+.glyphicon.active,
+.left-nav-panel .active{
+    color: maroon;
 }
 .left-nav-panel{
     position: fixed;
 }
 .notification{
     margin: -5px 0 5px;
+}
+.sub-controls{
+    padding-top: 5px;
+    padding-left: 10px;
+}
+.sub-controls .glyphicon{
+    font-size: 20px;
+}
+.dropdown-menu li{
+    cursor: pointer;
 }

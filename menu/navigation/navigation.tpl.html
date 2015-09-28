@@ -3,15 +3,24 @@
 
     <div class="col-sm-5">
         <div class="input-group">
-            <input type="text" ng-model="loggerID" class="form-control" placeholder="X-Performance-Logger...">
-            <span class="input-group-btn">
+            <input class="form-control" type="text" ng-model="loggerID" placeholder="X-Performance-Logger...">
+
+            <div class="input-group-btn" dropdown>
+                <button type="button" class="btn btn-default" dropdown-toggle>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="split-button">
+                    <li role="menuitem" ng-repeat="item in loggerIDStorage"
+                        ng-bind="item" ng-click="getLogs(item)"></li>
+                </ul>
                 <button class="btn btn-default" type="submit">Go!</button>
-            </span>
+            </div>
         </div>
+
     </div>
 
     <div class="col-sm-1 ">
-        <button class="btn btn-default"type="reset">Clear</button>
+        <button class="btn btn-default" type="button" ng-click="clear()">Clear History</button>
     </div>
 
     <label for="reqType" class="control-label col-sm-2">OSA call</label>
