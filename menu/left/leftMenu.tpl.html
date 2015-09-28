@@ -2,7 +2,7 @@
     <div class="row">
         <div class="btn-group">
             <label class="btn btn-default" ng-model="activeType" btn-radio="'req'"
-                   ng-click="showRequest()"  ng-disabled="disabled">
+                   ng-click="showRequest()" ng-disabled="disabled">
                 <span class="glyphicon glyphicon-arrow-up"></span>
             </label>
             <label class="btn btn-default" ng-model="activeType" btn-radio="'resp'"
@@ -11,21 +11,20 @@
             </label>
         </div>
     </div>
-    <div class="row">
-        HISTORY
-    </div>
-    <div class="row">
+    <div class="sub-controls">
+        <div class="row">
             <span class="glyphicon glyphicon-tag" ng-class="{active: formatted}" ng-click="toggleFormatted()"></span>
-    </div>
-    <div class="row">
-        <span class="glyphicon glyphicon-download-alt" ng-class="{active: !disabled}" ng-click="copy()"></span>
-    </div>
-    <div class="row">
-        <a href="https://osa.bw-sl.com/osa/" target="_blank"><span class="glyphicon glyphicon-info-sign"></span></a>
-    </div>
-    <div class="row">
-        <a href="https://confluence.bw-sl.com/display/PSI/How+to+get+OSA+logs+for+Velvet+call"
-           target="_blank"><span class="glyphicon glyphicon-question-sign"></span></a>
+        </div>
+        <div class="row">
+            <span class="glyphicon glyphicon-download-alt" ng-class="{active: !disabled}" ng-click="copy()"></span>
+        </div>
+        <div class="row">
+            <a href="https://osa.bw-sl.com/osa/" target="_blank"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </div>
+        <div class="row">
+            <a href="https://confluence.bw-sl.com/display/PSI/How+to+get+OSA+logs+for+Velvet+call"
+               target="_blank"><span class="glyphicon glyphicon-question-sign"></span></a>
+        </div>
     </div>
 </div>
 
