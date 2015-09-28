@@ -8,6 +8,12 @@ angular.module('LogViewer.Menu.Left', [])
             $scope.formatted = false;
             $scope.activeType = 'req';
             $scope.disabled = true;
+
+            $scope.copy = function() {
+                if (!$scope.disabled){
+                    logService.copyToClipboard();
+                }
+            };
             $scope.toggleFormatted = function() {
                 $scope.formatted = ! $scope.formatted;
                 logService.setFormatted($scope.formatted);

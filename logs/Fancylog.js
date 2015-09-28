@@ -46,8 +46,18 @@ angular.module('LogViewer.Fancylog', [])
                 setActiveOsaCall: setActiveOsaCall,
                 isFormatted: isFormatted,
                 setFormatted: setFormatted,
-                setDisplayLogs: setDisplayLogs
+                setDisplayLogs: setDisplayLogs,
+                copyToClipboard: copyToClipboard
             };
+            function copyToClipboard(){
+                //TODO add fallback
+                var copyDiv = document.getElementById('log-viewer');
+                var selection = window.getSelection();
+                selection.selectAllChildren(copyDiv);
+                document.execCommand("Copy", false, null);
+                selection.removeAllRanges();
+                $rootScope.$broadcast('commonAlert',{msgtype: 'info', msg: 'Copied'});
+            }
             function clean(){
                 activeOsaCall = null;
                 osaCalls = null;
