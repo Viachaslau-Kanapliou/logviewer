@@ -11,7 +11,6 @@ angular.module('LogViewer.Menu.Navigation', [])
             $scope.loggerID = null;
             $scope.isCollapsed = true;
 
-            $scope.loggerID = '15092710034991c6c3a060a91646e689fc83d4938ff7bd';
 
             $scope.clear = function(){
                 logHistoryService.clearHistory();
