@@ -1,0 +1,38 @@
+<div class="col-sm-2 spacer"></div>
+<div class="col-sm-8">
+    <form class="form-horizontal row" ng-controller="VlvConfigCtrl">
+        <div class="form-group">
+            <label for="velvet-host" class="control-label col-sm-3">Velvet host</label>
+
+            <div class="col-sm-9">
+                <input id="velvet-host" ng-model="velvetHost" class="form-control" size="80"
+                       placeholder="http://velvet-host.net">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="debug-service-list" class="control-label col-sm-3">Debug service</label>
+
+            <div class="col-sm-2">
+                <select id="debug-service-list" class="form-control"
+                        ng-model="debugService"
+                        ng-options="version.label for version in versions">
+                </select>
+            </div>
+            <div class="col-sm-7">
+                <input id="debug-service" ng-model="debugService.value"  class="form-control"
+                       ng-disabled="debugService.code!=2">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="username" class="control-label col-sm-3">User</label>
+
+            <div class="col-sm-5">
+                <input id="username" ng-model="username" class="form-control" placeholder="login">
+            </div>
+            <div class="col-sm-4">
+                <input id="password" ng-model="password" class="form-control" placeholder="password">
+            </div>
+        </div>
+    </form>
+</div>
+<div class="col-sm-2 spacer"></div>

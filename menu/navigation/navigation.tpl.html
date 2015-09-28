@@ -1,0 +1,35 @@
+<form ng-submit="getLogs()" class="form-horizontal" ng-controller="NavigationCtrl">
+
+
+    <div class="col-sm-5">
+        <div class="input-group">
+            <input class="form-control" type="text" ng-model="loggerID" placeholder="X-Performance-Logger...">
+
+            <div class="input-group-btn" dropdown>
+                <button type="button" class="btn btn-default" dropdown-toggle>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="split-button">
+                    <li role="menuitem" ng-repeat="item in loggerIDStorage"
+                        ng-bind="item" ng-click="getLogs(item)"></li>
+                </ul>
+                <button class="btn btn-default" type="submit">Go!</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-sm-1 ">
+        <button class="btn btn-default" type="button" ng-click="clear()">Clear History</button>
+    </div>
+
+    <label for="reqType" class="control-label col-sm-2">OSA call</label>
+
+    <div class="col-sm-4">
+        <select id="reqType" class="form-control" ng-disabled="!osaCalls.length"
+                ng-model="activeOsaCall" ng-change="setActiveOsaCall()" ng-options="call for call in osaCalls">
+        </select>
+    </div>
+
+
+</form>

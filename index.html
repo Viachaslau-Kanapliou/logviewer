@@ -3,64 +3,44 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Log viewer</title>
-    <link rel="stylesheet" type="text/css" href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.css"/>
     <link rel="stylesheet" type="text/css" href="css/common.css">
 </head>
 <body>
-<div ng-app="LogViewer">
-<div ng-controller="MsgCtrl">
-    <div class="error ng-cloak" ng-show="isErrorActive" >{{lastErrorMessage}}</div>
+<div class="container-fluid" ng-app="LogViewer">
+    <div class="top-menu row" ng-include="'menu/top/topMenu.tpl.html'"></div>
+    <div class="main-content row" set-height>
+            <div class="col-sm-1">
+                <div class="left-nav-panel row" ng-include="'menu/left/leftMenu.tpl.html'"></div>
+            </div>
+            <div class="col-sm-11">
+                <div class="logs row" ng-include="'logs/fancylog.tpl.html'"></div>
+            </div>
+    </div>
 </div>
 
-<div ng-controller="VelvetCtrl">
-    <label for="velvet-host">Velvet host</label>
-    <input id="velvet-host" ng-model="velvetHost"  size="80" placeholder="http://velvet-host.net">
-    <label for="debug-service-list">Select debug service</label>
-    <select id="debug-service-list" ng-model="debugService"
-            ng-options="opt as opt.label for opt in versions">
-    </select>
-    <label for="debug-service">Debug service</label>
-    <input id="debug-service" ng-model="debugService.value"  size="50" ng-disabled="debugService.code!=2">
-    <br>
-    <label for="username">Username</label>
-    <input id="username" ng-model="username">
-    <label for="password">Password</label>
-    <input id="password" ng-model="password">
-    <br>
-    <label for="reqID">X-PerformanceLogger</label>
-    <input id="reqID" type="text" ng-model="reqID"  size="55">
-    <br>
-    <label for="reqType">Select request</label>
-    <select id="reqType">
-        <option ng-repeat="type in requestTypes" ng-click="updateLogsType($index)">{{type}}</option>
-    </select>
-    <input id="go" type="button" value="{{startBtnLbl}}"  ng-click="getLogs()"><br>
-</div>
+<!-- App dependency-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular-animate.js"></script>
+<script src="https://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
+<script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.2.2/angular-local-storage.min.js"></script>
 
-<div ng-controller="PrettyPrintCtrl">
-    <label for="req">Request</label>
-    <input id="req" type="radio" ng-model="logType" value="req" checked ng-change="showLogs()">
-    <label for="resp">Response</label>
-    <input id="resp" type="radio" ng-model="logType" value="resp" ng-change="showLogs()">
-    <label for="full">Full log</label>
-    <input id="full" type="radio" ng-model="logType" value="full" ng-change="showLogs()">
-    <br>
-    <label for="stylish">Show formatted</label>
-    <input id="stylish" type="checkbox" ng-model="isFormatted" ng-change="showLogs()">
-</div>
-</div>
+<!-- Vendor-->
+<script src="vendor/ng-lodash.min.js"></script>
 
-<!-- No Angular block-->
-<div class="result">
-        <pre class="prettyprint lang-html" >
-        </pre>
-</div>
+<!-- App scripts-->
+<script src="logs/Fancylog.js"></script>
+<script src="logs/LogHistory.js"></script>
+<script src="menu/MenuCommon.js"></script>
+<script src="menu/left/LeftMenu.js"></script>
+<script src="menu/navigation/Navigation.js"></script>
+<script src="menu/top/TopMenu.js"></script>
+<script src="notification/Notification.js"></script>
+<script src="vlvConfig/VlvConfig.js"></script>
+<script src="app.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-<script src="http://google-code-prettify.googlecode.com/svn/trunk/src/prettify.js"></script>
-<script src="js/velvet.js"></script>
-<script src="js/messages.js"></script>
-<script src="js/fancylog.js"></script>
 </body>
 </html>
