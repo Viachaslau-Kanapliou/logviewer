@@ -1,4 +1,8 @@
 angular.module('LogViewer.Notification', [])
+/**
+ * listen 'logsNotLoaded' do 'processAlert'
+ * listen 'commonAlert' do 'processAlert'
+ */
     .controller('NotificationCtrl', ['$scope', '$timeout',
         function ($scope, $timeout) {
             var msgTypes = [

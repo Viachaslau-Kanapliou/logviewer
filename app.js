@@ -9,7 +9,8 @@ angular.module('LogViewer', [
     'LogViewer.Menu.Navigation',
     'LogViewer.Menu.Top',
     'LogViewer.Notification',
-    'LogViewer.VlvConfig'
+    'LogViewer.VlvConfig',
+    'LogViewer.LogHistory'
 ])
     .config(function (localStorageServiceProvider) {
         localStorageServiceProvider

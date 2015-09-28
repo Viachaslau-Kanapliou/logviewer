@@ -28,6 +28,7 @@ angular.module('LogViewer.Fancylog', [])
  * throw 'logsLoaded' event {}
  * throw 'settingsUpdated' event {}
  * throw 'logsNotLoaded' event {type='error', msg : 'String'}
+ * throw 'commonAlert' event {type='info', msg : 'String'}
  */
     .service('logService', ['$http', 'vlvConfigService', '$rootScope',
         function ($http, vlvConfigService, $rootScope) {
