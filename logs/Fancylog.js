@@ -68,15 +68,15 @@ angular.module('LogViewer.Fancylog', [])
                             logs = logsObj.d.results;
                             osaCalls = findOsaCalls();
                             activeOsaCall = osaCalls[0];
-                            $rootScope.$broadcast('logsLoaded', {type: 'success'});
+                            $rootScope.$broadcast('logsLoaded');
                         } else {
                             clean();
-                            $rootScope.$broadcast('logsNotLoaded', {type: 'error', msg: 'No logs founds'});
+                            $rootScope.$broadcast('logsNotLoaded', {msgType: 'warning', msg: 'No logs founds'});
                         }
                     })
                     .error(function () {
                         clean();
-                        $rootScope.$broadcast('logsNotLoaded', {type: 'error', msg: 'Connection issue'});
+                        $rootScope.$broadcast('logsNotLoaded', {msgType: 'danger', msg: 'Connection issue'});
                     })
             }
 

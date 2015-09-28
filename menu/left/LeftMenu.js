@@ -17,7 +17,7 @@ angular.module('LogViewer.Menu.Left', [])
             };
             $scope.showResponse = function(){
                 logService.setDisplayLogs(false, true);
-            }
+            };
             $scope.$on('logsLoaded', function () {
                $scope.disabled = false;
             });

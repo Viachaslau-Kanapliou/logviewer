@@ -4,8 +4,8 @@ angular.module('LogViewer.Menu.Navigation', [])
  * Listen 'logsNotLoaded' do 'clean'
  * throw 'headerSizeChanged' ev = {}
  */
-    .controller('NavigationCtrl', ['$scope', 'messageService', 'logService', '$rootScope',
-        function ($scope, messageService, logService, $rootScope) {
+    .controller('NavigationCtrl', ['$scope', 'logService', '$rootScope',
+        function ($scope, logService, $rootScope) {
             $scope.osaCalls = [];
             $scope.activeOsaCall = null;
             $scope.loggerID = null;

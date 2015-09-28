@@ -1,33 +1,33 @@
 angular.module('LogViewer.Notification', [])
-.controller('NotificationCtrl', ['$scope','$timeout', function ($scope,$timeout) {
-    $scope.lastErrorMessage = null;
-    $scope.isErrorActive = false;
+    .controller('NotificationCtrl', ['$scope', '$timeout',
+        function ($scope, $timeout) {
+            var msgTypes = [
+                'success',
+                'info',
+                'warning',
+                'danger'
+            ];
+            $scope.message = null;
+            $scope.visibility = false;
+            $scope.msgType = msgTypes[0];
+            $scope.timeout = 1000;
 
-    $scope.$on('sendMessage',function(event, arg){
-        $scope.lastErrorMessage = arg.msg;
-        $scope.isErrorActive = true;
-        $timeout(function(){
-            $scope.isErrorActive = false;
-        },2000);
-    });
-}])
+            $scope.$on('logsNotLoaded', function (event, arg) {
+                $scope.message = arg.msg;
+                $scope.msgType = setType(arg.msgType);
+                $scope.visibility = true;
+                $timeout(function () {
+                    $scope.visibility = false;
+                    $scope.message = null;
+                }, $scope.timeout);
+            });
 
-.service('messageService',['$rootScope',function($rootScope){
-    //public interface
-    var service = {
-        showError    : showError
-    };
-
-    function showError(msg){
-        sendMessage(msg);
-    }
-    //util
-    function sendMessage(msg){
-        $rootScope.$broadcast('sendMessage',{
-            msg: msg
-        });
-    }
-    return service;
-}]);
+            function setType(msgType) {
+                if (msgType && msgTypes.indexOf(msgType) > -1) {
+                    return msgType;
+                }
+                return msgTypes[0];
+            }
+        }]);
 
 

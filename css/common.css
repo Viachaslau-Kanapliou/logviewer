@@ -14,7 +14,6 @@ body{
 }
 .main-content{
     overflow-y: auto;
-   height: 750px;
 }
 .glyphicon{
     cursor: pointer;
@@ -24,4 +23,7 @@ body{
 }
 .left-nav-panel{
     position: fixed;
+}
+.notification{
+    margin: -5px 0 5px;
 }
