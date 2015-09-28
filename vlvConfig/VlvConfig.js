@@ -12,10 +12,15 @@ angular.module('LogViewer.VlvConfig', [])
                 {code: 2, label: 'other', value: ''}
             ];
 
-            var code = localStorageService.get('debugService').code;
-            var index = lodash.find($scope.versions, {code: code});
-            localStorageService.bind($scope, 'debugService');
-            $scope.debugService =  index;
+            var storageObject = localStorageService.get('debugService');
+            if (storageObject && storageObject.code){
+                var index = lodash.find($scope.versions, {code: storageObject.code});
+                localStorageService.bind($scope, 'debugService');
+                $scope.debugService =  index;
+            } else{
+                localStorageService.bind($scope, 'debugService');
+                $scope.debugService =  $scope.versions[1];
+            }
 
             localStorageService.bind($scope, 'velvetHost');
             localStorageService.bind($scope, 'username');
