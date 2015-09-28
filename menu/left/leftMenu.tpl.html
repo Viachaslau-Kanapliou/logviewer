@@ -1,12 +1,14 @@
 <div ng-controller="LeftMenuCtrl" class="col-sm-12">
     <div class="row">
-        <div class="btn-group" role="group" aria-label="...">
-            <button id="resp" type="button" class="btn btn-default" ng-click="showRequest()" ng-disabled="disabled">
+        <div class="btn-group">
+            <label class="btn btn-default" ng-model="activeType" btn-radio="'req'"
+                   ng-click="showRequest()"  ng-disabled="disabled">
                 <span class="glyphicon glyphicon-arrow-up"></span>
-            </button>
-            <button id="req" type="button" class="btn btn-default" ng-click="showResponse()" ng-disabled="disabled">
+            </label>
+            <label class="btn btn-default" ng-model="activeType" btn-radio="'resp'"
+                   ng-click="showResponse()" ng-disabled="disabled">
                 <span class="glyphicon glyphicon-arrow-down"></span>
-            </button>
+            </label>
         </div>
     </div>
     <div class="row">

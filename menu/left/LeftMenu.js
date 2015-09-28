@@ -6,6 +6,7 @@ angular.module('LogViewer.Menu.Left', [])
     .controller('LeftMenuCtrl', ['$scope', 'logService',
         function ($scope, logService) {
             $scope.formatted = false;
+            $scope.activeType = 'req';
             $scope.disabled = true;
             $scope.toggleFormatted = function() {
                 $scope.formatted = ! $scope.formatted;
